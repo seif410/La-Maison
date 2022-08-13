@@ -9,12 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import database.database;
+
 public class Register extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        database db = new database(this);
         Button btn = (Button) findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +50,8 @@ public class Register extends AppCompatActivity {
                 if (!(pass.equals(cpass))) {
                     Toast.makeText(getApplicationContext(), "Password doesn't match", Toast.LENGTH_LONG).show();
                 }
+                db.adduser(fname, lname, pass, email, birthdate);
+
             }
         });
         Button logbtn = (Button) findViewById(R.id.loginbtn);
