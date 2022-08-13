@@ -41,7 +41,7 @@ public class database extends SQLiteOpenHelper {
 
     public Boolean test(String email, String password) {
         SQLiteDatabase dbs = getReadableDatabase();
-        Cursor hehe = dbs.query("users", new String[]{"email", "pass"}, "email" + "=" + "'" + email + "AND" + "pass" +
+        Cursor hehe = dbs.query("users", new String[]{"email", "pass"}, "email" + "=" + "'" + email + "'" + "AND " + "pass" +
                 "=" + "'" + password + "'", null, null, null, null, null);
         if (hehe.moveToFirst()) {
             return true;
