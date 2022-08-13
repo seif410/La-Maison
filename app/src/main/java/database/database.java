@@ -2,6 +2,7 @@ package database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -36,5 +37,15 @@ public class database extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.insert("users", null, data);
         db.close();
+    }
+
+    public Boolean test(String email, String password) {
+        SQLiteDatabase dbs = getReadableDatabase();
+        Cursor hehe = dbs.query("users", new String[]{"email", "pass"}, "email" + "=" + "'" + email + "AND" + "pass" +
+                "=" + "'" + password + "'", null, null, null, null, null);
+        if (hehe.moveToFirst()) {
+            return true;
+        }
+        return false;
     }
 }

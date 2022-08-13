@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import database.database;
+
 
 public class Login extends AppCompatActivity {
 
@@ -16,6 +18,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        database log = new database(this);
         Button btn = (Button) findViewById(R.id.login_btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,7 +35,8 @@ public class Login extends AppCompatActivity {
                 } else if (loged.getemail().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "PLease Enter Your Email!", Toast.LENGTH_LONG).show();
                 } else {
-                    Intent i = new Intent(Login.this, Home.class);
+                    if (log.test(loged.getemail()))
+                        Intent i = new Intent(Login.this, Home.class);
                     startActivity(i);
                 }
 
