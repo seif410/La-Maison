@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,7 +51,13 @@ public class Register extends AppCompatActivity {
                 if (!(pass.equals(cpass))) {
                     Toast.makeText(getApplicationContext(), "Password doesn't match", Toast.LENGTH_LONG).show();
                 }
-                db.adduser(fname, lname, pass, email, birthdate);
+                if (isValidEmail((EditText) findViewById(R.id.editTextTextEmailAddress))) {
+                    db.adduser(fname, lname, pass, email, birthdate);
+                    Toast.makeText(Register.this, "User Created Successfully", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(Register.this, "Invalid email address", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -62,5 +69,14 @@ public class Register extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    public boolean isValidEmail(EditText email) {
+        String emailInput = email.getText().toString();
+        if (!emailInput.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

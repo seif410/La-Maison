@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,9 +39,10 @@ public class Login extends AppCompatActivity {
                     if (log.test(loged.getemail(), loged.getPassword())) {
                         Intent i = new Intent(Login.this, Home.class);
                         startActivity(i);
+                    } else if (!isValidEmail(email)) {
+                        Toast.makeText(Login.this, "Invalid email address", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Invalid Email or Password!", Toast.LENGTH_LONG).show();
-
+                        Toast.makeText(getApplicationContext(), "Incorrect Email or Password!", Toast.LENGTH_LONG).show();
                     }
 
                 }
@@ -55,5 +57,14 @@ public class Login extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    public boolean isValidEmail(EditText email) {
+        String emailInput = email.getText().toString();
+        if (!emailInput.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
