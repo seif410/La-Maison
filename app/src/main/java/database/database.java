@@ -19,6 +19,8 @@ public class database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table users(id integer primary key," +
                 "fname text,lname text,pass text,email text,birthdate text)");
+        sqLiteDatabase.execSQL("create table cart(itemid integer primary key," +
+                "itemname text,price integer,userid integer,FOREIGN KEY(userid) REFERENCES user(id))");
     }
 
     @Override
@@ -28,24 +30,38 @@ public class database extends SQLiteOpenHelper {
     }
 
     public void adduser(String fn, String ln, String pw, String email, String bd) {
+        SQLiteDatabase db = getWritableDatabase();
         ContentValues data = new ContentValues();
         data.put("fname", fn);
         data.put("lname", ln);
         data.put("pass", pw);
         data.put("email", email);
         data.put("birthdate", bd);
-        SQLiteDatabase db = getWritableDatabase();
         db.insert("users", null, data);
         db.close();
     }
 
-    public Boolean test(String email, String password) {
+    public String CheckLogin(String email, String password) {
         SQLiteDatabase dbs = getReadableDatabase();
-        Cursor hehe = dbs.query("users", new String[]{"email", "pass"}, "email" + "=" + "'" + email + "'" + "AND " + "pass" +
+        Cursor data = dbs.query("users", new String[]{"id", "email", "pass"}, "email" + "=" + "'" + email + "'" + "AND " + "pass" +
                 "=" + "'" + password + "'", null, null, null, null, null);
-        if (hehe.moveToFirst()) {
-            return true;
+        if (data.moveToFirst()) {
+            return data.getString(0);
         }
-        return false;
+
+    }
+
+    public void AddtoCart(int userid, String item_name, int price) {
+        SQLiteDatabase dbb = getWritableDatabase();
+        ContentValues da = new ContentValues();
+        da.put("itemname", item_name);
+        da.put("price", price);
+        da.put("userid", userid);
+        dbb.insert("cart", null, da);
+        dbb.close();
+    }
+
+    public int GetIdbyEmail(String x) {
+
     }
 }

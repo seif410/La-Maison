@@ -16,6 +16,8 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        String x = (getIntent().getExtras().getString("email"));
+        Toast.makeText(Home.this, x, Toast.LENGTH_LONG).show();
         ImageButton imgbtn = (ImageButton) findViewById(R.id.fpagebtn);
         imgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
