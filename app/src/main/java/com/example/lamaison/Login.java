@@ -36,9 +36,9 @@ public class Login extends AppCompatActivity {
                 } else if (loged.getemail().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "PLease Enter Your Email!", Toast.LENGTH_LONG).show();
                 } else {
-                    if (log.CheckLogin(loged.getemail(), loged.getPassword())) {
+                    if (log.CheckLogin(loged.getemail(), loged.getPassword()) != null) {
                         Intent i = new Intent(Login.this, Home.class);
-                        i.putExtra("email", loged.getemail());
+                        i.putExtra("email", log.CheckLogin(loged.getemail(), loged.getPassword()));
                         startActivity(i);
                     } else if (!isValidEmail(email)) {
                         Toast.makeText(Login.this, "Invalid email address", Toast.LENGTH_SHORT).show();

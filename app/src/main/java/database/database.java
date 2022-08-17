@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Adapter;
 
 import info.info;
 
@@ -14,6 +15,7 @@ public class database extends SQLiteOpenHelper {
     public database(@Nullable Context context) {
         super(context, info.DATABASE_NAME, null, info.DATABASE_VERSION);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -45,13 +47,14 @@ public class database extends SQLiteOpenHelper {
         SQLiteDatabase dbs = getReadableDatabase();
         Cursor data = dbs.query("users", new String[]{"id", "email", "pass"}, "email" + "=" + "'" + email + "'" + "AND " + "pass" +
                 "=" + "'" + password + "'", null, null, null, null, null);
-        if (data.moveToFirst()) {
-            return data.getString(0);
-        }
+        data.moveToFirst();
+        dbs.close();
+        return data.getString(0);
+
 
     }
 
-    public void AddtoCart(int userid, String item_name, int price) {
+    public void AddtoCart(String userid, String item_name, String price) {
         SQLiteDatabase dbb = getWritableDatabase();
         ContentValues da = new ContentValues();
         da.put("itemname", item_name);
@@ -61,7 +64,5 @@ public class database extends SQLiteOpenHelper {
         dbb.close();
     }
 
-    public int GetIdbyEmail(String x) {
 
-    }
 }
