@@ -8,9 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 public class Home extends AppCompatActivity {
+    ViewFlipper viewFlipper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +54,26 @@ public class Home extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+        setContentView(R.layout.activity_home);
+        int imgArr[] = {R.drawable.adidas, R.drawable.adidas2, R.drawable.heels4};
+        viewFlipper = (ViewFlipper) findViewById(R.id.flipper);
+        for (int i = 0; i < imgArr.length; i++) {
+            showImg(imgArr[i]);
+        }
 
     }
+
+    public void showImg(int img) {
+        ImageView imageView = new ImageView(this);
+        imageView.setBackgroundResource(img);
+
+        viewFlipper.addView(imageView);
+        viewFlipper.setFlipInterval(3000);
+        viewFlipper.setAutoStart(true);
+        viewFlipper.setInAnimation(this, android.R.anim.fade_in);
+        viewFlipper.setOutAnimation(this, android.R.anim.fade_out);
+    }
+
 }
+
+
