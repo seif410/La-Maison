@@ -5,12 +5,11 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
-    tools:context=".MainActivity">
+    android:background="@drawable/back">
 
     <Button
         android:id="@+id/loginbtn"
-        android:layout_width="266dp"
+        android:layout_width="240dp"
         android:layout_height="56dp"
         android:layout_marginStart="80dp"
         android:layout_marginTop="25dp"
@@ -31,12 +30,13 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="First name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text=""
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -51,6 +51,7 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text=""
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
@@ -64,6 +65,7 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
@@ -72,7 +74,7 @@
         android:layout_width="238dp"
         android:layout_height="66dp"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="80dp"
         android:fontFamily="@font/actor"
         android:text="Sign Up"
@@ -93,6 +95,7 @@
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
@@ -106,15 +109,16 @@
         android:hint="Enter birth-date"
         android:inputType="date"
         android:minHeight="48dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword3" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="266dp"
+        android:layout_width="240dp"
         android:layout_height="56dp"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="90dp"
         android:layout_marginEnd="80dp"
         android:background="@drawable/roundbtn"
         android:text="Sign Up"
@@ -136,6 +140,7 @@
         android:hint="Confirm Password"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
 
