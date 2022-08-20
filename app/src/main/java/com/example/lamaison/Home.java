@@ -1,15 +1,20 @@
 package com.example.lamaison;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import Categories.Clothes;
 import Categories.Electronics;
@@ -24,6 +29,30 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         String x = (getIntent().getExtras().getString("email"));
         Toast.makeText(getApplicationContext(), x, Toast.LENGTH_LONG).show();
+        BottomNavigationView btv = findViewById(R.id.bottom_navigation);
+        btv.setSelectedItemId(R.id.home);
+        btv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.cart:
+                        Intent cart = new Intent(getApplicationContext(), Cart.class);
+                        cart.putExtra("email", x);
+                        startActivity(cart);
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.home:
+                        return true;
+                    case R.id.Profile:
+                        Intent profile = new Intent(getApplicationContext(), Profile.class);
+                        profile.putExtra("email", x);
+                        startActivity(profile);
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
+        });
         ImageButton imgbtn = (ImageButton) findViewById(R.id.fpagebtn);
         imgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,14 +77,6 @@ public class Home extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(Home.this, Electronics.class);
                 i.putExtra("homeid", x);
-                startActivity(i);
-            }
-        });
-        Button logout = (Button) findViewById(R.id.button3);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Home.this, Login.class);
                 startActivity(i);
             }
         });
