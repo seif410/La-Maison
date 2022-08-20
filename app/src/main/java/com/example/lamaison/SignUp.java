@@ -1,7 +1,7 @@
 package com.example.lamaison;
 
 public class SignUp {
-    private String fname, lname, pass, Cpass, email, birthdate;
+    private String fname, lname, pass, email, birthdate;
 
     public String getFname() {
         return fname;
@@ -25,14 +25,6 @@ public class SignUp {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getCpass() {
-        return Cpass;
-    }
-
-    public void setCpass(String cpass) {
-        Cpass = cpass;
     }
 
     public void setPass(String pass) {

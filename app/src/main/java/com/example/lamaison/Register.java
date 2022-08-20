@@ -24,38 +24,42 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SignUp su = new SignUp();
-                String fname = ((EditText) findViewById(R.id.editTextTextPersonName)).getText().toString();
-                String lname = ((EditText) findViewById(R.id.editTextTextPersonName2)).getText().toString();
-                String pass = ((EditText) findViewById(R.id.editTextTextPassword2)).getText().toString();
-                String cpass = ((EditText) findViewById(R.id.editTextTextPassword3)).getText().toString();
-                String email = ((EditText) findViewById(R.id.editTextTextEmailAddress)).getText().toString();
-                String birthdate = ((EditText) findViewById(R.id.editTextDate)).getText().toString();
+                EditText fname = ((EditText) findViewById(R.id.editTextTextPersonName));
+                EditText lname = ((EditText) findViewById(R.id.editTextTextPersonName2));
+                EditText pass = ((EditText) findViewById(R.id.editTextTextPassword2));
+                EditText cpass = ((EditText) findViewById(R.id.editTextTextPassword3));
+                EditText email = ((EditText) findViewById(R.id.editTextTextEmailAddress));
+                EditText birthdate = ((EditText) findViewById(R.id.editTextDate));
 
-                su.setFname(fname);
-                su.setLname(lname);
-                su.setBirthdate(birthdate);
-                su.setPass(pass);
-                su.setCpass(cpass);
-                su.setEmail(email);
-                if ((fname.equals(""))) {
+                su.setFname(fname.getText().toString());
+                su.setLname(lname.getText().toString());
+                su.setBirthdate(birthdate.getText().toString());
+                su.setPass(pass.getText().toString());
+                su.setEmail(email.getText().toString());
+                if ((su.getFname().equals(""))) {
                     Toast.makeText(getApplicationContext(), "Please enter first name", Toast.LENGTH_LONG).show();
-                } else if ((lname.equals(""))) {
+                } else if ((su.getLname().equals(""))) {
                     Toast.makeText(getApplicationContext(), "Please enter last name", Toast.LENGTH_LONG).show();
-                } else if ((email.equals(""))) {
+                } else if ((su.getEmail().equals(""))) {
                     Toast.makeText(getApplicationContext(), "Please enter an email", Toast.LENGTH_LONG).show();
-                } else if ((pass.equals(""))) {
+                } else if ((su.getPass().equals(""))) {
                     Toast.makeText(getApplicationContext(), "Please enter a Password", Toast.LENGTH_LONG).show();
-                } else if ((cpass.equals(""))) {
+                } else if ((cpass.getText().toString().equals(""))) {
                     Toast.makeText(getApplicationContext(), "Please Confirm Password", Toast.LENGTH_LONG).show();
                 }
-                if (!(pass.equals(cpass))) {
+                if (!(su.getPass().equals(cpass.getText().toString()))) {
                     Toast.makeText(getApplicationContext(), "Password doesn't match", Toast.LENGTH_LONG).show();
                 }
                 if (isValidEmail((EditText) findViewById(R.id.editTextTextEmailAddress))) {
-                    db.adduser(fname, lname, pass, email, birthdate);
+                    db.adduser(su.getFname(), su.getLname(), su.getPass(), su.getEmail(), su.getBirthdate());
                     Toast.makeText(Register.this, "User Created Successfully", Toast.LENGTH_SHORT).show();
-
-                } else {
+                    fname.setText("");
+                    lname.setText("");
+                    pass.setText("");
+                    cpass.setText("");
+                    email.setText("");
+                    birthdate.setText("");
+                } else if (!(isValidEmail((EditText) findViewById(R.id.editTextTextEmailAddress))) && !(su.getEmail().isEmpty())) {
                     Toast.makeText(Register.this, "Invalid email address", Toast.LENGTH_SHORT).show();
                 }
 

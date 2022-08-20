@@ -6,11 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
+
+import Categories.Clothes;
+import Categories.Groceries;
 
 public class Home extends AppCompatActivity {
     ViewFlipper viewFlipper;
@@ -20,12 +21,11 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         String x = (getIntent().getExtras().getString("email"));
-        /*Toast.makeText(Home.this, x, Toast.LENGTH_LONG).show();*/
         ImageButton imgbtn = (ImageButton) findViewById(R.id.fpagebtn);
         imgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Home.this, MainActivity2.class);
+                Intent i = new Intent(Home.this, Groceries.class);
                 startActivity(i);
             }
         });
@@ -54,7 +54,6 @@ public class Home extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        setContentView(R.layout.activity_home);
         int imgArr[] = {R.drawable.adidas, R.drawable.adidas2, R.drawable.heels4};
         viewFlipper = (ViewFlipper) findViewById(R.id.flipper);
         for (int i = 0; i < imgArr.length; i++) {
