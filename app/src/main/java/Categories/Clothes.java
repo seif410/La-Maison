@@ -31,7 +31,7 @@ public class Clothes extends Activity {
         setContentView(R.layout.activity_clothes);
         gv = (GridView) findViewById(R.id.gridView1);
         String x = (getIntent().getExtras().getString("homeid"));
-        gv.setAdapter(new ClothesCustomAdapter(this, prgmNameList, prgmImages, prgmNameList2, x) {
+        gv.setAdapter(new CustomAdapter(this, prgmNameList, prgmImages, prgmNameList2, x) {
         });
     }
 

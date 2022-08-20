@@ -40,6 +40,7 @@ public class Login extends AppCompatActivity {
                         Intent i = new Intent(Login.this, Home.class);
                         i.putExtra("email", log.CheckLogin(loged.getemail(), loged.getPassword()));
                         startActivity(i);
+                        finish();
                     } else if (!isValidEmail(email)) {
                         Toast.makeText(Login.this, "Invalid email address", Toast.LENGTH_SHORT).show();
                     } else {

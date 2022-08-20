@@ -31,7 +31,8 @@ public class Groceries extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groceries);
         gv = (GridView) findViewById(R.id.gridView2);
-        gv.setAdapter(new GroceriesCustomAdapter(this, prgmNameList3, prgmImages3, prgmNameList4) {
+        String x = (getIntent().getExtras().getString("homeid"));
+        gv.setAdapter(new CustomAdapter(this, prgmNameList3, prgmImages3, prgmNameList4, x) {
         });
     }
 

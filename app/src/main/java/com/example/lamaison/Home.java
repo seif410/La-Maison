@@ -8,9 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import Categories.Clothes;
+import Categories.Electronics;
 import Categories.Groceries;
 
 public class Home extends AppCompatActivity {
@@ -21,11 +23,13 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         String x = (getIntent().getExtras().getString("email"));
+        Toast.makeText(getApplicationContext(), x, Toast.LENGTH_LONG).show();
         ImageButton imgbtn = (ImageButton) findViewById(R.id.fpagebtn);
         imgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Home.this, Groceries.class);
+                i.putExtra("homeid", x);
                 startActivity(i);
             }
         });
@@ -42,7 +46,8 @@ public class Home extends AppCompatActivity {
         imgbtn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Home.this, MainActivity3.class);
+                Intent i = new Intent(Home.this, Electronics.class);
+                i.putExtra("homeid", x);
                 startActivity(i);
             }
         });
