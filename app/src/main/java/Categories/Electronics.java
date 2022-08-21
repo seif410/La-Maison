@@ -26,8 +26,8 @@ public class Electronics extends Activity {
             R.drawable.phone1, R.drawable.phone2, R.drawable.phone3, R.drawable.phone4,
             R.drawable.samsung, R.drawable.tv2, R.drawable.tv4, R.drawable.tv3, R.drawable.mircro};
 
-    public static String[] prgmNameList6 = {"171", "350", "1,199", "4,850", "29,640",
-            "8,770", "6,199", "4,299", "9,499", "9,699", "5,499", "256"};
+    public static String[] prgmNameList6 = {"171 EGP", "350 EGP", "1,199 EGP", "4,850 EGP", "29,640 EGP",
+            "8,770 EGP", "6,199 EGP", "4,299 EGP", "9,499 EGP", "9,699 EGP", "5,499 EGP", "256 EGP"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

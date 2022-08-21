@@ -22,9 +22,9 @@ public class Groceries extends Activity {
             R.drawable.penne1, R.drawable.pepper, R.drawable.tea, R.drawable.persil,
             R.drawable.tuna1
     };
-    public static String[] prgmNameList4 = {"10", "55", "25", "30",
-            "20", "10", "9", "25", "30", "300", "30",
-            "25"};
+    public static String[] prgmNameList4 = {"10 EGP", "55 EGP", "25 EGP", "30 EGP",
+            "20 EGP", "10 EGP", "9 EGP", "25 EGP", "30 EGP", "300 EGP", "30 EGP",
+            "25 EGP"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

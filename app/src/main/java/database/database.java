@@ -11,6 +11,8 @@ import info.info;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class database extends SQLiteOpenHelper {
     public database(@Nullable Context context) {
         super(context, info.DATABASE_NAME, null, info.DATABASE_VERSION);
@@ -22,12 +24,13 @@ public class database extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table users(id integer primary key," +
                 "fname text,lname text,pass text,email text,birthdate text)");
         sqLiteDatabase.execSQL("create table cart(itemid integer primary key," +
-                "itemname text,price integer,userid integer,FOREIGN KEY(userid) REFERENCES user(id))");
+                "itemname text,price text,userid integer,FOREIGN KEY(userid) REFERENCES user(id))");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("drop table if exists users");
+        sqLiteDatabase.execSQL("drop table if exists cart");
         onCreate(sqLiteDatabase);
     }
 
@@ -64,5 +67,10 @@ public class database extends SQLiteOpenHelper {
         dbb.close();
     }
 
+    public Cursor getdata(String id) {
+        SQLiteDatabase DB = getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM cart where userid=" + id, null);
+        return cursor;
+    }
 
 }
