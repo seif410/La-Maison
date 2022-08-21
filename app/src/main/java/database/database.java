@@ -73,4 +73,10 @@ public class database extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public void CheckoutCart(String id) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete("cart", "userid='" + id + "'", null);
+        db.close();
+    }
+
 }

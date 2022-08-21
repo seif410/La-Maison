@@ -102,7 +102,7 @@ public class CustomAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 db.AddtoCart(id, firsttextview[position], secondtextview[position]);
-                Toast.makeText(context, "Item Added to Cart", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, firsttextview[position] + " Added to Cart", Toast.LENGTH_SHORT).show();
             }
         });
 

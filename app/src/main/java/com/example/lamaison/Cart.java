@@ -11,6 +11,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -25,6 +28,9 @@ public class Cart extends AppCompatActivity {
     database db;
     MyAdapter adapter;
     String ids;
+    Button checkout;
+    TextView textview;
+    BottomNavigationView btv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +38,14 @@ public class Cart extends AppCompatActivity {
         setContentView(R.layout.activity_cart);
         String x = (getIntent().getExtras().getString("email"));
         ids = x;
-        BottomNavigationView btv = findViewById(R.id.bottom_navigation);
+        db = new database(this);
+        name = new ArrayList<>();
+        price = new ArrayList<>();
+        recyclerview = findViewById(R.id.recyclerview1);
+        checkout = (Button) findViewById(R.id.Checkout_btn);
+        textview = (TextView) findViewById(R.id.textView3);
+        btv = findViewById(R.id.bottom_navigation);
+
         btv.setSelectedItemId(R.id.cart);
         btv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -56,26 +69,41 @@ public class Cart extends AppCompatActivity {
                 return false;
             }
         });
-        db = new database(this);
-        name = new ArrayList<>();
-        price = new ArrayList<>();
-        recyclerview = findViewById(R.id.recyclerview1);
-        adapter = new MyAdapter(this, name, price);
-        recyclerview.setAdapter(adapter);
-        recyclerview.setLayoutManager(new LinearLayoutManager(this));
-        displaydata();
+        if (displaydata()) {
+            recyclerview.setVisibility(View.VISIBLE);
+            textview.setVisibility(View.GONE);
+            adapter = new MyAdapter(this, name, price);
+            recyclerview.setAdapter(adapter);
+            recyclerview.setLayoutManager(new LinearLayoutManager(this));
+        } else {
+            recyclerview.setVisibility(View.GONE);
+            textview.setVisibility(View.VISIBLE);
+            checkout.setVisibility(View.GONE);
+        }
+        
+        checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.CheckoutCart(ids);
+                Toast.makeText(Cart.this, "You Bought Items Successfully", Toast.LENGTH_LONG).show();
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+            }
+        });
     }
 
-    private void displaydata() {
+    private boolean displaydata() {
         Cursor cursor = db.getdata(ids);
         if (cursor.getCount() == 0) {
-            Toast.makeText(this, "No Items Added to Cart", Toast.LENGTH_LONG).show();
-            return;
+            return false;
         } else {
             while (cursor.moveToNext()) {
                 name.add(cursor.getString(1));
                 price.add(cursor.getString(2));
             }
+            return true;
         }
     }
 }

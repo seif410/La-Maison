@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,11 +43,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView item_name, item_price;
+        ImageButton deletebtn;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             item_name = itemView.findViewById(R.id.itemsname);
             item_price = itemView.findViewById(R.id.itemsprice);
+            deletebtn = itemView.findViewById(R.id.deletebtn);
+
         }
     }
 }

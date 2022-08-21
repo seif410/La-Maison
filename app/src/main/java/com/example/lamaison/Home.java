@@ -28,7 +28,6 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         String x = (getIntent().getExtras().getString("email"));
-        Toast.makeText(getApplicationContext(), x, Toast.LENGTH_LONG).show();
         BottomNavigationView btv = findViewById(R.id.bottom_navigation);
         btv.setSelectedItemId(R.id.home);
         btv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
