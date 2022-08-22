@@ -30,8 +30,10 @@ public class Cart extends AppCompatActivity {
     MyAdapter adapter;
     String ids;
     Button checkout;
-    TextView textview;
+    TextView textview, textView1, textView2, textView3;
     BottomNavigationView btv;
+    int total;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,9 @@ public class Cart extends AppCompatActivity {
         recyclerview = findViewById(R.id.recyclerview1);
         checkout = (Button) findViewById(R.id.Checkout_btn);
         textview = (TextView) findViewById(R.id.textView3);
+        textView1 = (TextView) findViewById(R.id.textView8);
+        textView2 = (TextView) findViewById(R.id.textView4);
+        textView3 = (TextView) findViewById(R.id.textView9);
         btv = findViewById(R.id.bottom_navigation);
 
         btv.setSelectedItemId(R.id.cart);
@@ -57,6 +62,7 @@ public class Cart extends AppCompatActivity {
                         home.putExtra("email", x);
                         startActivity(home);
                         overridePendingTransition(0, 0);
+                        finish();
                         return true;
                     case R.id.cart:
                         finish();
@@ -69,6 +75,7 @@ public class Cart extends AppCompatActivity {
                         profile.putExtra("email", x);
                         startActivity(profile);
                         overridePendingTransition(0, 0);
+                        finish();
                         return true;
                 }
                 return false;
@@ -77,6 +84,7 @@ public class Cart extends AppCompatActivity {
         if (displaydata()) {
             recyclerview.setVisibility(View.VISIBLE);
             textview.setVisibility(View.GONE);
+            textView1.setText(String.valueOf(total));
             adapter = new MyAdapter(this, name, price, ids);
             recyclerview.setAdapter(adapter);
             recyclerview.setLayoutManager(new LinearLayoutManager(this));
@@ -84,6 +92,9 @@ public class Cart extends AppCompatActivity {
             recyclerview.setVisibility(View.GONE);
             textview.setVisibility(View.VISIBLE);
             checkout.setVisibility(View.GONE);
+            textView1.setVisibility(View.GONE);
+            textView2.setVisibility(View.GONE);
+            textView3.setVisibility(View.GONE);
         }
 
         checkout.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +118,8 @@ public class Cart extends AppCompatActivity {
             while (cursor.moveToNext()) {
                 name.add(cursor.getString(1));
                 price.add(cursor.getString(2));
+                total = total + cursor.getInt(2);
+
             }
             return true;
         }

@@ -7,6 +7,10 @@ public class SignUp {
         return fname;
     }
 
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
     public String getLname() {
         return lname;
     }
@@ -19,16 +23,16 @@ public class SignUp {
         return pass;
     }
 
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
     }
 
     public String getBirthdate() {
@@ -39,9 +43,6 @@ public class SignUp {
         this.birthdate = birthdate;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
 }
 
 

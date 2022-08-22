@@ -24,7 +24,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private ArrayList item_name, item_price;
     String x;
     database db;
-    Cart cart = new Cart();
 
     public MyAdapter(Context context, ArrayList item_name, ArrayList item_price, String id) {
         this.context = context;

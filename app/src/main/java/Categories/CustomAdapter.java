@@ -19,12 +19,13 @@ import database.database;
 public class CustomAdapter extends BaseAdapter {
     String[] firsttextview;
     Context context;
-    String[] secondtextview;
+    int[] secondtextview;
+    int[] test;
     String id;
     int[] imageId;
     private static LayoutInflater inflater = null;
 
-    public CustomAdapter(Clothes clothes, String[] prgmNameList, int[] prgmImages, String[] ppp, String s) {
+    public CustomAdapter(Clothes clothes, String[] prgmNameList, int[] prgmImages, int[] ppp, String s) {
         // TODO Auto-generated constructor stub
         firsttextview = prgmNameList;
         context = clothes;
@@ -35,7 +36,7 @@ public class CustomAdapter extends BaseAdapter {
         id = s;
     }
 
-    public CustomAdapter(Groceries groceries, String[] prgmNameList, int[] prgmImages, String[] ppp, String s) {
+    public CustomAdapter(Groceries groceries, String[] prgmNameList, int[] prgmImages, int[] ppp, String s) {
         // TODO Auto-generated constructor stub
         firsttextview = prgmNameList;
         context = groceries;
@@ -46,7 +47,7 @@ public class CustomAdapter extends BaseAdapter {
         id = s;
     }
 
-    public CustomAdapter(Electronics electronics, String[] prgmNameList, int[] prgmImages, String[] ppp, String s) {
+    public CustomAdapter(Electronics electronics, String[] prgmNameList, int[] prgmImages, int[] ppp, String s) {
         // TODO Auto-generated constructor stub
         firsttextview = prgmNameList;
         context = electronics;
@@ -88,7 +89,6 @@ public class CustomAdapter extends BaseAdapter {
         database db = new database(context);
         Holder holder = new Holder();
         View rowView;
-        int intid = Integer.parseInt(id);
         rowView = inflater.inflate(R.layout.programlist, null);
         holder.name = (TextView) rowView.findViewById(R.id.textView1);
         holder.price = (TextView) rowView.findViewById(R.id.textView2);
@@ -97,11 +97,11 @@ public class CustomAdapter extends BaseAdapter {
 
         holder.name.setText(firsttextview[position]);
         holder.img.setImageResource(imageId[position]);
-        holder.price.setText(secondtextview[position]);
+        holder.price.setText(String.valueOf(secondtextview[position]));
         holder.btn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.AddtoCart(id, firsttextview[position], secondtextview[position]);
+                db.AddtoCart(id, firsttextview[position], String.valueOf(secondtextview[position]));
                 Toast.makeText(context, firsttextview[position] + " Added to Cart", Toast.LENGTH_SHORT).show();
             }
         });

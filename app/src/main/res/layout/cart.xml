@@ -59,6 +59,14 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" EGP"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold" />
         </LinearLayout>
 
         <LinearLayout

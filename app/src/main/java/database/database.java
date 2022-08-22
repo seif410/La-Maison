@@ -24,7 +24,7 @@ public class database extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table users(id integer primary key," +
                 "fname text,lname text,pass text,email text,birthdate text)");
         sqLiteDatabase.execSQL("create table cart(itemid integer primary key," +
-                "itemname text,price text,userid integer,FOREIGN KEY(userid) REFERENCES user(id))");
+                "itemname text,price integer,userid integer,FOREIGN KEY(userid) REFERENCES user(id))");
     }
 
     @Override
@@ -84,5 +84,11 @@ public class database extends SQLiteOpenHelper {
         db.delete("cart", "userid='" + id + "'" + " and itemname='" +
                 itemname + "'", null);
         db.close();
+    }
+
+    public Cursor getuserdata(String id) {
+        SQLiteDatabase DB = getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM users where id=" + id, null);
+        return cursor;
     }
 }

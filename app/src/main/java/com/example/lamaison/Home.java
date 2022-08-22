@@ -39,6 +39,7 @@ public class Home extends AppCompatActivity {
                         cart.putExtra("email", x);
                         startActivity(cart);
                         overridePendingTransition(0, 0);
+                        finish();
                         return true;
                     case R.id.home:
                         return true;
@@ -47,6 +48,7 @@ public class Home extends AppCompatActivity {
                         profile.putExtra("email", x);
                         startActivity(profile);
                         overridePendingTransition(0, 0);
+                        finish();
                         return true;
                 }
                 return false;
@@ -79,7 +81,8 @@ public class Home extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        int imgArr[] = {R.drawable.adidas, R.drawable.adidas2, R.drawable.heels4};
+        int imgArr[] = {R.drawable.adidas, R.drawable.adidas2, R.drawable.salad,
+                R.drawable.oranges, R.drawable.lap, R.drawable.camera};
         viewFlipper = (ViewFlipper) findViewById(R.id.flipper);
         for (int i = 0; i < imgArr.length; i++) {
             showImg(imgArr[i]);

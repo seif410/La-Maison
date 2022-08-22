@@ -12,7 +12,6 @@ import com.example.lamaison.R;
 public class Clothes extends Activity {
     GridView gv;
     Context context;
-    ArrayList prgmName;
     public static String[] prgmNameList = {"Adidas Bag", "Women handbag",
             "Oversize purple shirt", "Oversize grey T-shirt", "Black heels",
             "Gold heels", "Baggy pants", "Ripped jeans", "Les Deux", "Nasa Hoodie",
@@ -21,9 +20,9 @@ public class Clothes extends Activity {
             R.drawable.tshirt1, R.drawable.shoes, R.drawable.heels4, R.drawable.jeanse,
             R.drawable.jeanse1, R.drawable.hoodie2, R.drawable.hoodi5, R.drawable.adidas2,
             R.drawable.adidas};
-    public static String[] prgmNameList2 = {"800 EGP", "900 EGP", "300 EGP", "350 EGP",
-            "750 EGP", "1500 EGP", "500 EGP", "300 EGP", "600 EGP", "600 EGP", "900 EGP",
-            "1000 EGP"};
+    public static int[] prgmNameList2 = {800, 900, 300, 350,
+            750, 1500, 500, 300, 600, 600, 900,
+            1000};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
