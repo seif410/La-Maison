@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/drawable/addtocart.xml" value="0.2005" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/drawable/custom_button1.xml" value="0.2985" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.297" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/drawable/roundbtn.xml" value="0.2985" />
@@ -10,21 +11,21 @@
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/drawable/selector.xml" value="0.297" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/drawable/test.xml" value="0.2985" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout-v28/activity_login.xml" value="0.3009833262077811" />
-        <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/activity_cart.xml" value="0.23157894736842105" />
+        <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/activity_cart.xml" value="0.176" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/activity_clothes.xml" value="0.25" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/activity_clothes2.xml" value="0.16052631578947368" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/activity_electronics.xml" value="0.23157894736842105" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/activity_groceries.xml" value="0.23157894736842105" />
-        <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/activity_home.xml" value="0.25" />
-        <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/activity_login.xml" value="0.23157894736842105" />
+        <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/activity_main.xml" value="0.27992047713717694" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/activity_main2.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/activity_main3.xml" value="0.35260416666666666" />
-        <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/activity_profile.xml" value="0.23157894736842105" />
+        <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/activity_profile.xml" value="0.2" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/activity_register.xml" value="0.176" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/cart.xml" value="0.25" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/fragment_cart.xml" value="0.23157894736842105" />
-        <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/programlist.xml" value="0.264" />
+        <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/layout/programlist.xml" value="0.2" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/menu/bottom_nav.xml" value="0.23157894736842105" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/mipmap-anydpi-v26/bg.xml" value="0.14" />
         <entry key="..\:/Users/seifa/Desktop/LaMaison/app/src/main/res/mipmap-anydpi-v26/bg_round.xml" value="0.14" />
