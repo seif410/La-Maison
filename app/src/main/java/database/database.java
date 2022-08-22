@@ -79,4 +79,10 @@ public class database extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void DeleteItem(String id, String itemname) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete("cart", "userid='" + id + "'" + " and itemname='" +
+                itemname + "'", null);
+        db.close();
+    }
 }

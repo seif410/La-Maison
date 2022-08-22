@@ -1,7 +1,9 @@
 package com.example.lamaison;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import database.database;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,12 +22,15 @@ import java.util.ArrayList;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private Context context;
     private ArrayList item_name, item_price;
+    String x;
+    database db;
+    Cart cart = new Cart();
 
-
-    public MyAdapter(Context context, ArrayList item_name, ArrayList item_price) {
+    public MyAdapter(Context context, ArrayList item_name, ArrayList item_price, String id) {
         this.context = context;
         this.item_name = item_name;
         this.item_price = item_price;
+        x = id;
     }
 
     @NonNull
@@ -35,12 +42,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        db = new database(context);
         holder.item_name.setText(String.valueOf(item_name.get(position)));
         holder.item_price.setText(String.valueOf(item_price.get(position)));
         holder.deletebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, String.valueOf(item_price.get(position)), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, String.valueOf(item_price.get(position)), Toast.LENGTH_SHORT).show();
+                db.DeleteItem(x, String.valueOf(item_name.get(position)));
+                Toast.makeText(context, String.valueOf(item_name.get(position)) + " Removed from Cart", Toast.LENGTH_SHORT).show();
             }
         });
     }

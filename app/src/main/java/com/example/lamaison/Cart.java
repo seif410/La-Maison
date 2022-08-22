@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 public class Cart extends AppCompatActivity {
 
+
     RecyclerView recyclerview;
     ArrayList<String> name, price;
     database db;
@@ -58,6 +59,10 @@ public class Cart extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.cart:
+                        finish();
+                        overridePendingTransition(0, 0);
+                        startActivity(getIntent());
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.Profile:
                         Intent profile = new Intent(getApplicationContext(), Profile.class);
@@ -72,7 +77,7 @@ public class Cart extends AppCompatActivity {
         if (displaydata()) {
             recyclerview.setVisibility(View.VISIBLE);
             textview.setVisibility(View.GONE);
-            adapter = new MyAdapter(this, name, price);
+            adapter = new MyAdapter(this, name, price, ids);
             recyclerview.setAdapter(adapter);
             recyclerview.setLayoutManager(new LinearLayoutManager(this));
         } else {
@@ -80,7 +85,7 @@ public class Cart extends AppCompatActivity {
             textview.setVisibility(View.VISIBLE);
             checkout.setVisibility(View.GONE);
         }
-        
+
         checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
