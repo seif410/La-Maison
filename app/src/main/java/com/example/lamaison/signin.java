@@ -2,9 +2,8 @@ package com.example.lamaison;
 
 public class signin {
 
-    String email;
-    String password;
-    public static signin logedinfo;
+    private String email;
+    private String password;
 
     public String getemail() {
         return email;

@@ -22,15 +22,19 @@ import Categories.Groceries;
 
 public class Home extends AppCompatActivity {
     ViewFlipper viewFlipper;
+    BottomNavigationView bottomnavigationview;
+    String x;
+    ImageButton imgbtn, imgbtn2, imgbtn3;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        String x = (getIntent().getExtras().getString("email"));
-        BottomNavigationView btv = findViewById(R.id.bottom_navigation);
-        btv.setSelectedItemId(R.id.home);
-        btv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        x = (getIntent().getExtras().getString("email"));
+        bottomnavigationview = findViewById(R.id.bottom_navigation);
+        bottomnavigationview.setSelectedItemId(R.id.home);
+        bottomnavigationview.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
@@ -54,7 +58,7 @@ public class Home extends AppCompatActivity {
                 return false;
             }
         });
-        ImageButton imgbtn = (ImageButton) findViewById(R.id.fpagebtn);
+        imgbtn = (ImageButton) findViewById(R.id.fpagebtn);
         imgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +67,7 @@ public class Home extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        ImageButton imgbtn2 = (ImageButton) findViewById(R.id.spagebtn);
+        imgbtn2 = (ImageButton) findViewById(R.id.spagebtn);
         imgbtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +76,7 @@ public class Home extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        ImageButton imgbtn3 = (ImageButton) findViewById(R.id.tpagebtn);
+        imgbtn3 = (ImageButton) findViewById(R.id.tpagebtn);
         imgbtn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,7 +95,7 @@ public class Home extends AppCompatActivity {
     }
 
     public void showImg(int img) {
-        ImageView imageView = new ImageView(this);
+        imageView = new ImageView(this);
         imageView.setBackgroundResource(img);
 
         viewFlipper.addView(imageView);

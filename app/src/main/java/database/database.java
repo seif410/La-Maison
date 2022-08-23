@@ -52,9 +52,11 @@ public class database extends SQLiteOpenHelper {
                 "=" + "'" + password + "'", null, null, null, null, null);
         data.moveToFirst();
         dbs.close();
-        return data.getString(0);
-
-
+        if (data.getCount() == 0) {
+            return null;
+        } else {
+            return data.getString(0);
+        }
     }
 
     public void AddtoCart(String userid, String item_name, String price) {
@@ -73,6 +75,12 @@ public class database extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getuserdata(String id) {
+        SQLiteDatabase DB = getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM users where id=" + id, null);
+        return cursor;
+    }
+
     public void CheckoutCart(String id) {
         SQLiteDatabase db = getWritableDatabase();
         db.delete("cart", "userid='" + id + "'", null);
@@ -86,9 +94,5 @@ public class database extends SQLiteOpenHelper {
         db.close();
     }
 
-    public Cursor getuserdata(String id) {
-        SQLiteDatabase DB = getReadableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT * FROM users where id=" + id, null);
-        return cursor;
-    }
+
 }

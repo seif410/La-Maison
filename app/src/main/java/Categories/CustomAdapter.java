@@ -18,44 +18,41 @@ import database.database;
 
 public class CustomAdapter extends BaseAdapter {
     String[] firsttextview;
-    Context context;
     int[] secondtextview;
-    int[] test;
-    String id;
     int[] imageId;
+    Context context;
+    String id;
+    database db;
     private static LayoutInflater inflater = null;
 
     public CustomAdapter(Clothes clothes, String[] prgmNameList, int[] prgmImages, int[] ppp, String s) {
         // TODO Auto-generated constructor stub
         firsttextview = prgmNameList;
-        context = clothes;
-        imageId = prgmImages;
         secondtextview = ppp;
-        inflater = (LayoutInflater) context.
-                getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        imageId = prgmImages;
+        context = clothes;
         id = s;
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     public CustomAdapter(Groceries groceries, String[] prgmNameList, int[] prgmImages, int[] ppp, String s) {
         // TODO Auto-generated constructor stub
         firsttextview = prgmNameList;
-        context = groceries;
-        imageId = prgmImages;
         secondtextview = ppp;
-        inflater = (LayoutInflater) context.
-                getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        imageId = prgmImages;
+        context = groceries;
         id = s;
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     public CustomAdapter(Electronics electronics, String[] prgmNameList, int[] prgmImages, int[] ppp, String s) {
         // TODO Auto-generated constructor stub
         firsttextview = prgmNameList;
-        context = electronics;
-        imageId = prgmImages;
         secondtextview = ppp;
-        inflater = (LayoutInflater) context.
-                getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        imageId = prgmImages;
+        context = electronics;
         id = s;
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -86,7 +83,7 @@ public class CustomAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
-        database db = new database(context);
+        db = new database(context);
         Holder holder = new Holder();
         View rowView;
         rowView = inflater.inflate(R.layout.programlist, null);
@@ -105,8 +102,6 @@ public class CustomAdapter extends BaseAdapter {
                 Toast.makeText(context, firsttextview[position] + " Added to Cart", Toast.LENGTH_SHORT).show();
             }
         });
-
         return rowView;
     }
-
 }

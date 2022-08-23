@@ -13,23 +13,28 @@ import android.widget.Toast;
 import database.database;
 
 public class Register extends AppCompatActivity {
+    SignUp su;
+    database db;
+    EditText fname, lname, pass, cpass, email, birthdate;
+    Button btn, logbtn;
+    String emailInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        database db = new database(this);
-        Button btn = (Button) findViewById(R.id.button);
+        db = new database(this);
+        btn = (Button) findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SignUp su = new SignUp();
-                EditText fname = ((EditText) findViewById(R.id.editTextTextPersonName));
-                EditText lname = ((EditText) findViewById(R.id.editTextTextPersonName2));
-                EditText pass = ((EditText) findViewById(R.id.editTextTextPassword2));
-                EditText cpass = ((EditText) findViewById(R.id.editTextTextPassword3));
-                EditText email = ((EditText) findViewById(R.id.editTextTextEmailAddress));
-                EditText birthdate = ((EditText) findViewById(R.id.editTextDate));
+                su = new SignUp();
+                fname = ((EditText) findViewById(R.id.editTextTextPersonName));
+                lname = ((EditText) findViewById(R.id.editTextTextPersonName2));
+                pass = ((EditText) findViewById(R.id.editTextTextPassword2));
+                cpass = ((EditText) findViewById(R.id.editTextTextPassword3));
+                email = ((EditText) findViewById(R.id.editTextTextEmailAddress));
+                birthdate = ((EditText) findViewById(R.id.editTextDate));
 
                 su.setFname(fname.getText().toString());
                 su.setLname(lname.getText().toString());
@@ -65,7 +70,7 @@ public class Register extends AppCompatActivity {
 
             }
         });
-        Button logbtn = (Button) findViewById(R.id.loginbtn);
+        logbtn = (Button) findViewById(R.id.loginbtn);
         logbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +81,7 @@ public class Register extends AppCompatActivity {
     }
 
     public boolean isValidEmail(EditText email) {
-        String emailInput = email.getText().toString();
+        emailInput = email.getText().toString();
         if (!emailInput.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
             return true;
         } else {

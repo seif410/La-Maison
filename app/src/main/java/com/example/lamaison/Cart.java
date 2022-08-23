@@ -119,7 +119,6 @@ public class Cart extends AppCompatActivity {
                 name.add(cursor.getString(1));
                 price.add(cursor.getString(2));
                 total = total + cursor.getInt(2);
-
             }
             return true;
         }

@@ -14,19 +14,24 @@ import database.database;
 
 
 public class Login extends AppCompatActivity {
+    signin loged;
+    EditText email, pw;
+    database log;
+    Button btn, signupbtn;
+    String emailInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        database log = new database(this);
-        Button btn = (Button) findViewById(R.id.login_btn);
+        log = new database(this);
+        btn = (Button) findViewById(R.id.login_btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                signin loged = new signin();
-                EditText email = (EditText) findViewById(R.id.editTextTextEmailAddress);
-                EditText pw = (EditText) findViewById(R.id.editTextTextPassword2);
+                loged = new signin();
+                email = (EditText) findViewById(R.id.editTextTextEmailAddress);
+                pw = (EditText) findViewById(R.id.editTextTextPassword2);
                 loged.setemail(email.getText().toString());
                 loged.setPassword(pw.getText().toString());
                 if (loged.getemail().isEmpty() && loged.getPassword().isEmpty()) {
@@ -43,15 +48,13 @@ public class Login extends AppCompatActivity {
                         finish();
                     } else if (!isValidEmail(email)) {
                         Toast.makeText(Login.this, "Invalid email address", Toast.LENGTH_SHORT).show();
-                    } else {
+                    } else if (log.CheckLogin(loged.getemail(), loged.getPassword()) == null) {
                         Toast.makeText(getApplicationContext(), "Incorrect Email or Password!", Toast.LENGTH_LONG).show();
                     }
-
                 }
-
             }
         });
-        Button signupbtn = (Button) findViewById(R.id.reg_btn);
+        signupbtn = (Button) findViewById(R.id.reg_btn);
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,7 +65,7 @@ public class Login extends AppCompatActivity {
     }
 
     public boolean isValidEmail(EditText email) {
-        String emailInput = email.getText().toString();
+        emailInput = email.getText().toString();
         if (!emailInput.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
             return true;
         } else {

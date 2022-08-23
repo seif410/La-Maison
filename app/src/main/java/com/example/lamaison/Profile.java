@@ -20,24 +20,18 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class Profile extends AppCompatActivity {
     ImageButton logoutbtn;
     database db;
-    TextView textView1;
-    TextView textView2;
-    TextView textView3;
-    TextView textView4;
-    String id;
-    String fName;
-    String lName;
-    String Email;
-    String Birthdate;
+    TextView textView1, textView2, textView3, textView4;
+    String id, fName, lName, Email, Birthdate;
+    BottomNavigationView bottomnavigationview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         id = (getIntent().getExtras().getString("email"));
-        BottomNavigationView btv = findViewById(R.id.bottom_navigation);
-        btv.setSelectedItemId(R.id.Profile);
-        btv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomnavigationview = findViewById(R.id.bottom_navigation);
+        bottomnavigationview.setSelectedItemId(R.id.Profile);
+        bottomnavigationview.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
@@ -94,7 +88,6 @@ public class Profile extends AppCompatActivity {
                 lName = cursor.getString(2);
                 Email = cursor.getString(4);
                 Birthdate = cursor.getString(5);
-
             }
         }
     }
